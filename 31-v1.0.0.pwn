@@ -25,19 +25,19 @@
 //                                      Copyright (c) 2013 - Initial Scripts  //
 //============================================================================//
 
-// ========================(( #K�t�phaneler ))=============================== //
+// ========================(( #Kütüphaneler ))=============================== //
 #include <a_samp>  // - SA:MP Include | 0.3x | Developed by SA:MP Team
 
-// =========================(( #De�i�kenler ))=============================== //
-#define FILTERSCRIPT // - Filterscript tan�t�m�.
+// =========================(( #Değişkenler ))=============================== //
+#define FILTERSCRIPT // - Filterscript tanıtımı.
 
-// - Sistem mesajlar�:
+// - Sistem mesajları:
 #define MASS_CONSOLE(%0) printf("[31 SYSTEM]: "%0)
-#define MASS_BILGI(%0,%1) SendClientMessage(%0,0xFF0000,"{#2F2F2F}[ {#4A627F}B�LG� {#2F2F2F}]: {4A627F}" %1)
+#define MASS_BILGI(%0,%1) SendClientMessage(%0,0xFF0000,"{#2F2F2F}[ {#4A627F}BİLGİ {#2F2F2F}]: {4A627F}" %1)
 #define MASS_31_KULLANIM(%0) SendClientMessage(%0,0xFF0000,"{#2F2F2F}[ {#841594}KULLANIM {#2F2F2F}]: {841594}/31 {#2F2F2F}[{#841594}cek{#2F2F2F}/{#841594}birak{#2F2F2F}/{#841594}yardim{#2F2F2F}]")
 #define MASS_FER_KULLANIM(%0) SendClientMessage(%0,0xFF0000,"{#2F2F2F}[ {#841594}KULLANIM {#2F2F2F}]: {841594}/fermuar {#2F2F2F}[{#841594}ac{#2F2F2F}/{#841594}kapat{#2F2F2F}]")
 
-// - Tan�t�mlar:
+// - Tanıtımlar:
 new MASSFERMUAR[MAX_PLAYERS] = 0;
 new MASSCEKIYOR[MAX_PLAYERS] = 0;
 new MASSEREKSIYON[MAX_PLAYERS] = 0;
@@ -52,7 +52,7 @@ public OnFilterScriptInit()
 	MASS_CONSOLE("        Developed by SkyChord       ");
 	MASS_CONSOLE("Copyright (c) 2013 - Initial Scripts");
 	MASS_CONSOLE("====================================");
-	MASS_CONSOLE("31 sistemi ba�ar�yla ba�lat�ld�.");
+	MASS_CONSOLE("31 sistemi başarıyla başlatıldı.");
 	return 1;
 }
 
@@ -63,7 +63,7 @@ public OnFilterScriptExit()
 	MASS_CONSOLE("        Developed by SkyChord       ");
 	MASS_CONSOLE("Copyright (c) 2013 - Initial Scripts");
 	MASS_CONSOLE("====================================");
-	MASS_CONSOLE("31 sistemi ba�ar�yla kapat�ld�.");
+	MASS_CONSOLE("31 sistemi başarıyla kapatıldı.");
 	return 1;
 }
 
@@ -76,14 +76,14 @@ main()
 	MASS_CONSOLE("        Developed by SkyChord       ");
 	MASS_CONSOLE("Copyright (c) 2013 - Initial Scripts");
 	MASS_CONSOLE("====================================");
-	MASS_CONSOLE("31 sistemi ba�ar�yla ba�lat�ld�.");
+	MASS_CONSOLE("31 sistemi başarıyla başlatıldı.");
 }
 
 #endif
 
 public OnPlayerConnect(playerid)
 {
-	// - S�f�rlamalar.
+	// - Sıfırlamalar.
 	MASSFERMUAR[playerid] = 0;
 	MASSCEKIYOR[playerid] = 0;
 	MASSEREKSIYON[playerid] = 0;
@@ -92,7 +92,7 @@ public OnPlayerConnect(playerid)
 
 public OnPlayerDisconnect(playerid, reason)
 {
-	// - S�f�rlamalar.
+	// - Sıfırlamalar.
 	MASSFERMUAR[playerid] = 0;
 	MASSCEKIYOR[playerid] = 0;
 	MASSEREKSIYON[playerid] = 0;
@@ -101,7 +101,7 @@ public OnPlayerDisconnect(playerid, reason)
 
 public OnPlayerSpawn(playerid)
 {
-	// - S�f�rlamalar.
+	// - Sıfırlamalar.
 	MASSFERMUAR[playerid] = 0;
 	MASSCEKIYOR[playerid] = 0;
 	MASSEREKSIYON[playerid] = 0;
@@ -110,8 +110,8 @@ public OnPlayerSpawn(playerid)
 
 public OnPlayerDeath(playerid, killerid, reason)
 {
-	if(MASSCEKIYOR[playerid] == 1) return MASS_BILGI(playerid,"�ld���n�z i�in mast�rbasyonunuz sona erdi.");
-	// - S�f�rlamalar.
+	if(MASSCEKIYOR[playerid] == 1) return MASS_BILGI(playerid,"Öldüğünüz için mastürbasyonunuz sona erdi.");
+	// - Sıfırlamalar.
 	MASSFERMUAR[playerid] = 0;
 	MASSCEKIYOR[playerid] = 0;
 	MASSEREKSIYON[playerid] = 0;
@@ -131,17 +131,17 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	    
 		if(!strcmp("ac",tmp,true))
 		{
-		if(MASSFERMUAR[playerid] != 0) return MASS_BILGI(playerid,"Fermuar�n�z zaten a��k!");
+		if(MASSFERMUAR[playerid] != 0) return MASS_BILGI(playerid,"Fermuarınız zaten açık!");
 		
 		MASSFERMUAR[playerid] = 1;
-		MASS_BILGI(playerid,"Fermuar�n�z� a�t�n�z!");
+		MASS_BILGI(playerid,"Fermuarınızı açtınız!");
 		}
  		if(!strcmp("kapat",tmp,true))
 		{
-		if(MASSFERMUAR[playerid] != 1) return MASS_BILGI(playerid,"Fermuar�n�z zaten kapal�!");
+		if(MASSFERMUAR[playerid] != 1) return MASS_BILGI(playerid,"Fermuarınız zaten kapalı!");
 		
 		MASSFERMUAR[playerid] = 0;
-		MASS_BILGI(playerid,"Fermuar�n�z� kapatt�n�z!");
+		MASS_BILGI(playerid,"Fermuarınızı kapattınız!");
 		}
 	}
 	
@@ -153,48 +153,33 @@ public OnPlayerCommandText(playerid, cmdtext[])
 
 		if(!strcmp("cek",tmp,true))
 		{
-		if(MASSFERMUAR[playerid] != 1) return MASS_BILGI(playerid,"Fermuar�n�z� a�madan �ekemezsiniz!");
-		if(MASSCEKIYOR[playerid] != 0) return MASS_BILGI(playerid,"Zaten mast�rbasyon �ekiyorsunuz!");
+		if(MASSFERMUAR[playerid] != 1) return MASS_BILGI(playerid,"Fermuarınızı açmadan çekemezsiniz!");
+		if(MASSCEKIYOR[playerid] != 0) return MASS_BILGI(playerid,"Zaten mastürbasyon çekiyorsunuz!");
 		
-		MASS_BILGI(playerid,"Mast�rbasyon �ekilmeye ba�land�.");
+		MASS_BILGI(playerid,"Mastürbasyon çekilmeye başlandı.");
 		MASSCEKIYOR[playerid] = 1;
 		ApplyAnimation(playerid, "OTB", "wtchrace_win",4.1,0,1,1,0,3300);
 		}
 
 		if(!strcmp("birak",tmp,true))
 		{
-		if(MASSCEKIYOR[playerid] != 1) return MASS_BILGI(playerid,"Zaten mast�rbasyon �ekmiyorsunuz!");
+		if(MASSCEKIYOR[playerid] != 1) return MASS_BILGI(playerid,"Zaten mastürbasyon çekmiyorsunuz!");
 		
-		MASS_BILGI(playerid,"Mast�rbasyon b�rak�ld�.");
+		MASS_BILGI(playerid,"Mastürbasyon bırakıldı.");
 		MASSCEKIYOR[playerid] = 0;
 		
 		if(MASSEREKSIYON[playerid] == 1)
 		{
-		MASS_BILGI(playerid,"1 dakika boyunca ereksiyon halinde olacaks�n�z.");
+		MASS_BILGI(playerid,"1 dakika boyunca ereksiyon halinde olacaksınız.");
 		} else {
-		MASS_BILGI(playerid,"�imdi {FFFFFF}/fermuarkapat {4A627F}yaz�p penisinizi g�r�nmez hale getirebilirsiniz!");
+		MASS_BILGI(playerid,"Şimdi {FFFFFF}/fermuarkapat {4A627F}yazıp penisinizi görünmez hale getirebilirsiniz!");
 		}
 		}
 	}
 	return 0;
 }
 
-public OnPlayerStateChange(playerid, newstate, oldstate)
-{
-	return 1;
-}
-
-public OnPlayerUpdate(playerid)
-{
-	return 1;
-}
-
-public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
-{
-	return 1;
-}
-
-// ============================(( #Di�er ))================================== //
+// ============================(( #Diğer ))================================== //
 
 // - strtok | Developed by SA:MP Team
 strtok(const string[], &index)
@@ -218,34 +203,34 @@ strtok(const string[], &index)
 
 //============================================================================//
 //                              SkyChord Scripts                              //
-//                          - 31 S�STEM� / v1.0.0 -                           //
+//                          - 31 SİSTEMİ / v1.0.0 -                           //
 
-//                           - S�STEM A�IKLAMASI -                            //
-/* Merhaba arkada�lar, bu sistemi uzun zamand�r d���n�yordum, yapmak i�in
-sonunda vakit buldum ve sizin i�in uygun hale getirdim. Umar�m be�enirsiniz.
+//                           - SİSTEM AÇIKLAMASI -                            //
+/* Merhaba arkadaşlar, bu sistemi uzun zamandır düşünüyordum, yapmak için
+sonunda vakit buldum ve sizin için uygun hale getirdim. Umarım beğenirsiniz.
 */
-//                          - S�STEM �ZELL�KLER� -                            //
+//                          - SİSTEM ÖZELLİKLERİ -                            //
 /*
 - Komutlar:
 
-> /31 cek           ==    Mast�rbasyona ba�lars�n�z.
-> /31 birak         ==    As�lmay� b�rak�rs�n�z.
-> /31 yardim        ==    Komutlar hakk�nda bilgi sayfas� a��l�r.
-> /fermuar ac       ==    Fermuar� a�ar, 31 �ekmeden �nce gerekli.
+> /31 cek           ==    Mastürbasyona başlarsınız.
+> /31 birak         ==    Asılmayı bırakırsınız.
+> /31 yardim        ==    Komutlar hakkında bilgi sayfası açılır.
+> /fermuar ac       ==    Fermuarı açar, 31 çekmeden önce gerekli.
 > /fermuar kapat    ==    Bu komutla penisinizi gizleyebilirsiniz.
 
-- �zellikler:
+- Özellikler:
 
--> Fermuar a�t���n�zda penis objesi belirir.
-+> Fermuar a�madan 31 �ekemezsiniz.
-+> �ekmeye ba�lad���n�zda animasyon ba�lar.
--> �ekmeye ba�lad�ktan bir s�re sonra ereksiyon haline ge�ersiniz.
--> �ekmeye ba�lad�ktan 3 dakika sonra bo�al�rs�n�z. (Ayarlanabilir.)
--> Bo�ald�ktan sonra 5 dakika boyunca 31 �ekemezsiniz. (Ayarlanabilir.)
--> Bo�al�rken k�sa bir s�reli�ine obje ��kar.
--> �ekmeyi b�rakt���n�zda ereksiyon halindeyken normal haline gelir.
-Normal halindeyken �ylece kal�r.
--> Fermuar kapatt���n�zda obje (yani penisiniz) kaybolur.
+-> Fermuar açtığınızda penis objesi belirir.
++> Fermuar açmadan 31 çekemezsiniz.
++> Çekmeye başladığınızda animasyon başlar.
+-> Çekmeye başladıktan bir süre sonra ereksiyon haline geçersiniz.
+-> Çekmeye başladıktan 3 dakika sonra boşalırsınız. (Ayarlanabilir.)
+-> Boşaldıktan sonra 5 dakika boyunca 31 çekemezsiniz. (Ayarlanabilir.)
+-> Boşalırken kısa bir süreliğine obje çıkar.
+-> Çekmeyi bıraktığınızda ereksiyon halindeyken normal haline gelir.
+Normal halindeyken öylece kalır.
+-> Fermuar kapattığınızda obje (yani penisiniz) kaybolur.
 
 */
 //============================================================================//
